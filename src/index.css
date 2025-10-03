@@ -1,3 +1,19 @@
-* {
-  margin: 0;
+.book-detail {
+  border: solid 2px black;
+}
+
+.book-detail h2,
+h3 {
+  text-align: center;
+}
+
+.book-detail p,
+.book-reserve {
+  width: 90em;
+  margin: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
 }
