@@ -10,6 +10,7 @@ export default function BookDetail({ selectedBook }) {
   const handleBackButton = () => {
     navigate("/");
   };
+
   return (
     <section className="book-detail">
       <button onClick={handleBackButton}>Back</button>
