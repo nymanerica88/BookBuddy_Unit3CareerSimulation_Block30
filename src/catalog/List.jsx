@@ -1,5 +1,4 @@
-import { Outlet, useNavigate } from "react-router";
-import BookDetail from "../reservations/BookDetail";
+import { Outlet, useNavigate, useParams } from "react-router";
 import { useState } from "react";
 import { getBookDetails } from "../api/books";
 
@@ -17,13 +16,17 @@ const bookList = [
 ];
 
 export default function List() {
-  const [selectedBook, setSelectedBook] = useState(null);
   const navigate = useNavigate();
+  const [selectedBook, setSelectedBook] = useState(undefined);
   const handleSelectBook = (event) => {
     const id = event.target.id;
-    navigate(`${id}`);
-    const book = getBookDetails(event.target.id);
+    const book = getBookDetails(id);
     setSelectedBook(book);
+    navigate(`${id}`);
+  };
+
+  const context = {
+    selectedBook,
   };
 
   return (
@@ -41,7 +44,7 @@ export default function List() {
           );
         })}
       </ul>
-      {selectedBook ? <BookDetail selectedBook={selectedBook} /> : <p />}
+      <Outlet context={context} />
     </>
   );
 }

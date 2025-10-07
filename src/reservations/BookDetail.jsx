@@ -1,17 +1,14 @@
-// import { useParams } from "react-router";
-import { useNavigate } from "react-router";
+import { useNavigate, useOutletContext } from "react-router";
 
-export default function BookDetail({ selectedBook }) {
-  // const { id } = useParams();
-  // console.log(id);
-
+export default function BookDetail() {
+  const { selectedBook } = useOutletContext();
   const navigate = useNavigate();
 
   const handleBackButton = () => {
-    navigate("/");
+    navigate("/books");
   };
 
-  return (
+  return selectedBook ? (
     <section className="book-detail">
       <button onClick={handleBackButton}>Back</button>
       <h2>{selectedBook.title}</h2>
@@ -24,5 +21,7 @@ export default function BookDetail({ selectedBook }) {
       </p>
       <button className="book-reserve">Reserve Book</button>
     </section>
+  ) : (
+    <p>Please select a book to view more details</p>
   );
 }
