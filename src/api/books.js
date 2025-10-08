@@ -1,9 +1,10 @@
 const API = import.meta.env.VITE_API;
+const BASE_BOOKS_URL = `${API}/books`;
 
 /** Fetch all books from the API */
 export async function getBooks() {
   try {
-    const response = await fetch(`${API}/books`);
+    const response = await fetch(BASE_BOOKS_URL);
     if (!response.ok) {
       throw Error("Failed to fetch books");
     }
@@ -16,7 +17,7 @@ export async function getBooks() {
 
 export async function getBookDetails(id) {
   try {
-    const response = await fetch(`${API}/books/${id}`);
+    const response = await fetch(`${BASE_BOOKS_URL}/${id}`);
     if (!response.ok) {
       throw Error("Failed to fetch book details");
     }
