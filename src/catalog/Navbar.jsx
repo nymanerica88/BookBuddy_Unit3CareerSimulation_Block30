@@ -13,13 +13,13 @@ export default function Navbar() {
       <nav>
         <NavLink to="/list">Books</NavLink>
 
-        {token ? (
+        {/* {token ? (
           <button onClick={logout}>Logout</button>
         ) : (
           <>
             <NavLink to="/login">Login</NavLink>
           </>
-        )}
+        )} */}
       </nav>
     </header>
   );
