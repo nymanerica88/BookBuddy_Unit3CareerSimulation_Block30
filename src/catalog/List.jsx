@@ -1,9 +1,10 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { getBooks } from "../api/books";
 
 export default function BookList() {
   const [books, setBooks] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const syncBooks = async () => {
@@ -13,6 +14,10 @@ export default function BookList() {
     syncBooks();
   }, []);
 
+  const handleViewBook = (id) => {
+    navigate(`${id}`);
+  };
+
   if (!books) {
     return <p>Loading books...</p>;
   }
@@ -20,23 +25,25 @@ export default function BookList() {
     return <p>No books available.</p>;
   }
   return (
-    <ul>
-      {books.map((book) => (
-        <li key={book.id}>
-          <Link to={`/books/${book.id}`}>
-            <div>
-              <img
-                src={book.coverimage}
-                alt={`Cover of ${book.title}`}
-                style={{ width: "100px", height: "auto" }}
-              />
+    <>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <Link to={`/books/${book.id}`}>
+              <div>
+                <img
+                  src={book.coverimage}
+                  alt={`Cover of ${book.title}`}
+                  style={{ width: "100px", height: "auto" }}
+                />
 
-              <h3>{book.title}</h3>
-              <button>View</button>
-            </div>
-          </Link>
-        </li>
-      ))}
-    </ul>
+                <h3>{book.title}</h3>
+                <button onClick={handleViewBook}>View</button>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

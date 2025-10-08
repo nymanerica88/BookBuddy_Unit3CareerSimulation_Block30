@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router";
 import { getBookDetails } from "../api/books";
 
 export default function BookDetail() {
-  const [selectedBook, setSelectedBook] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const [selectedBook, setSelectedBook] = useState(null);
   const handleBackButton = () => {
     navigate("/books");
   };
@@ -17,7 +17,7 @@ export default function BookDetail() {
       setSelectedBook(book);
     };
     syncBookDetails();
-  });
+  }, [id]);
 
   return selectedBook ? (
     <section className="book-detail">

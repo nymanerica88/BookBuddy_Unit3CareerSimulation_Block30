@@ -8,9 +8,8 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/books" element={<BookList />}>
-            <Route path=":id" element={<BookDetail />} />
-          </Route>
+          <Route path="/books" element={<BookList />} />
+          <Route path="/books/:id" element={<BookDetail />} />
         </Route>
       </Routes>
     </>
