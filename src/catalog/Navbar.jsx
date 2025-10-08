@@ -1,11 +1,11 @@
 import { NavLink } from "react-router";
-import { useAuth } from "../auth/ContextToken"
+// import { useAuth } from "./auth/ContextToken";
 
 const NavClass = ({ isActive }) => link + (isActive ? "active" : "");
 
 // Navbar with site navigation links
 export default function Navbar() {
-  const { token, logout } = useAuth();
+  // const { token, logout } = useAuth();
 
   return (
     <header>
@@ -13,13 +13,13 @@ export default function Navbar() {
       <nav>
         <NavLink to="/list">Books</NavLink>
 
-        {token ? (
+        {/* {token ? (
           <button onClick={logout}>Logout</button>
         ) : (
           <>
             <NavLink to="/login">Login</NavLink>
           </>
-        )}
+        )} */}
       </nav>
     </header>
   );
