@@ -24,7 +24,10 @@ export default function BookDetail() {
       <button onClick={handleBackButton}>Back</button>
       <h2>{selectedBook.title}</h2>
       <h3>Author: {selectedBook.author}</h3>
-      {/* <img src={selectedBook.coverimage} alt="" /> */}
+      <img
+        src={selectedBook.coverimage}
+        alt={`Cover of ${selectedBook.title}`}
+      />
       <p>
         Description: {selectedBook.description}
         <br />
