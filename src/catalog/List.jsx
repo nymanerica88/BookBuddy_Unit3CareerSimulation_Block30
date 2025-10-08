@@ -1,6 +1,18 @@
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { getBooks } from "../api/books";
 
-export default function BookList({ books }) {
+export default function BookList() {
+const [books, setBooks] = useState([]);
+
+useEffect(() => {
+  const syncBooks = async () => {
+    const bookList = await getBooks();
+  setBooks(bookList);
+  };
+  syncBooks();
+}, []);
+
   if (!books) {
     return <p>Loading books...</p>;
   }
