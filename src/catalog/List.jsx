@@ -25,25 +25,23 @@ export default function BookList() {
     return <p>No books available.</p>;
   }
   return (
-    <>
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>
-            <Link to={`/books/${book.id}`}>
-              <div>
-                <img
-                  src={book.coverimage}
-                  alt={`Cover of ${book.title}`}
-                  style={{ width: "100px", height: "auto" }}
-                />
+    <ul>
+      {books.map((book) => (
+        <li key={book.id}>
+          <Link to={`/books/${book.id}`}>
+            <div>
+              <img
+                src={book.coverimage}
+                alt={`Cover of ${book.title}`}
+                style={{ width: "100px", height: "auto" }}
+              />
 
-                <h3>{book.title}</h3>
-                <button onClick={handleViewBook}>View</button>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+              <h3>{book.title}</h3>
+              <button onClick={handleViewBook}>View</button>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
