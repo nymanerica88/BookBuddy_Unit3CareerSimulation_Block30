@@ -59,13 +59,23 @@
 }
 
 /* Style for the 'Reserve Book' button (call to action) */
-.book-detail .book-reserve {
+.book-detail .available {
   background-color: #28a745; /* Green */
   color: white;
 }
 
-.book-detail .book-reserve:hover {
+.book-detail .available:hover {
   background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.book-detail .not-available {
+  background-color: #848884; /* Green */
+  color: white;
+}
+
+.book-detail .not-available:hover {
+  background-color: #4a4a4a;
   transform: translateY(-1px);
 }
 

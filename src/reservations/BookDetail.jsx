@@ -30,7 +30,13 @@ export default function BookDetail() {
         <br />
         {selectedBook.available ? "Available" : "Out of Stock"}
       </p>
-      <button className="book-reserve">Reserve Book</button>
+      <button
+        className={`book-reserve ${
+          selectedBook.available ? " available" : " not-available"
+        }`}
+      >
+        Reserve Book
+      </button>
     </section>
   ) : (
     <p>Please select a book to view more details</p>
