@@ -11,7 +11,7 @@ export default function Navbar() {
     <header>
       <p>Book Buddy</p>
       <nav>
-        <NavLink to="/list">Books</NavLink>
+        <NavLink to="/books">Books</NavLink>
 
         {/* {token ? (
           <button onClick={logout}>Logout</button>
