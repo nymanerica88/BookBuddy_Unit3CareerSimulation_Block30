@@ -1,12 +1,23 @@
-import { useNavigate, useOutletContext } from "react-router";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { getBookDetails } from "../api/books";
 
 export default function BookDetail() {
-  const { selectedBook } = useOutletContext();
+  const [selectedBook, setSelectedBook] = useState(null);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const handleBackButton = () => {
     navigate("/books");
   };
+
+  useEffect(() => {
+    const syncBookDetails = async () => {
+      const book = await getBookDetails(id);
+      setSelectedBook(book);
+    };
+    syncBookDetails();
+  });
 
   return selectedBook ? (
     <section className="book-detail">
