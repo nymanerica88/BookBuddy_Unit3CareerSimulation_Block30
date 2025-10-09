@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router";
 import BookList from "./catalog/list";
 import Layout from "./catalog/Layout";
 import Register from "./auth/Register";
+import Login from "./auth/Login";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/books" element={<BookList />}>
             {/* <Route path=":id" element={<BookDetail />} /> */}
           </Route>

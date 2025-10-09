@@ -18,41 +18,41 @@ export default function CompleteLogin() {
       );
     }
   }
+
+  return (
+    <>
+      <h1>Welcome to Book Buddy! </h1>
+      <p>
+        Book Buddy is the most popular book club around with a new recommended
+        reading list available each month and additional special offers and
+        perks available to club members.
+      </p>
+      <p>
+        Please login below to access the recommended reading list and additional
+        Book Buddy Club membership perks. 📚
+      </p>
+
+      <form onSubmit={handleSubmit}>
+        <label>
+          E-Mail
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+        <button>Login</button>
+      </form>
+    </>
+  );
 }
-
-return (
-  <>
-    <h1>Welcome to Book Buddy! </h1>
-    <p>
-      Book Buddy is the most popular book club around with a new recommended
-      reading list available each month and additional special offers and perks
-      available to club members.
-    </p>
-    <p>
-      Please login below to access the recommended reading list and additional
-      Book Buddy Club membership perks. 📚
-    </p>
-
-    <form onSubmit={handleSubmit}>
-      <label>
-        E-Mail
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </label>
-      <button>Login</button>
-    </form>
-  </>
-);
