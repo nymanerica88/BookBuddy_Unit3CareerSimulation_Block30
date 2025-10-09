@@ -10,6 +10,7 @@ export default function BookDetail() {
 
   const [selectedBook, setSelectedBook] = useState(null);
   const [error, setError] = useState(null);
+  const [reserved, setReserve] = useState(false);
 
   const handleBackButton = () => {
     navigate("/books");
@@ -27,6 +28,7 @@ export default function BookDetail() {
     setError(null);
     try {
       await addReservation(token, id);
+      setReserve(!reserved);
     } catch (error) {
       setError(error.message);
     }
@@ -52,7 +54,7 @@ export default function BookDetail() {
         }`}
         onClick={handleReserveBook}
       >
-        Reserve Book
+        {!reserved ? "Reserve Book" : "Unreserve Book"}
       </button>
       {error && <p role="alert">{error}</p>}
     </section>

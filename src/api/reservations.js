@@ -16,7 +16,7 @@ export async function addReservation(token, bookId) {
   });
 
   if (!response.ok) {
-    const result = await response.json();
-    throw Error(result.message);
+    await response.json();
+    throw Error("Failure to reserve book: Already reserved");
   }
 }
