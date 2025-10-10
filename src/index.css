@@ -1,0 +1,99 @@
+/* Container for the single book details */
+.book-detail {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Title and headings */
+.book-detail h2 {
+  color: #333;
+  font-size: 2em;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+.book-detail h3 {
+  color: #555;
+  font-size: 1.2em;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+/* Paragraph content (Description and Availability) */
+.book-detail p {
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 25px;
+  padding: 10px;
+  border-left: 3px solid #007bff;
+  background-color: #f7f9fc;
+}
+
+/* Styling for the Back button (primary action) */
+.book-detail button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-right: 10px; /* Space between buttons */
+}
+
+/* Style for the initial 'Back' button */
+.book-detail > button:first-of-type {
+  background-color: #6c757d; /* Gray */
+  color: white;
+}
+
+.book-detail > button:first-of-type:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* Style for the image within the book-detail section */
+.book-detail img {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  display: block;
+  margin: 15px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the 'Reserve Book' button (call to action) */
+.book-detail .available {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.book-detail .available:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.book-detail .not-available {
+  background-color: #848884; /* Green */
+  color: white;
+}
+
+.book-detail .not-available:hover {
+  background-color: #4a4a4a;
+  transform: translateY(-1px);
+}
+
+/* Fallback message style */
+.book-detail + p {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.2em;
+  color: #999;
+}
