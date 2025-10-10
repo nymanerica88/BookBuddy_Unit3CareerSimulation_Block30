@@ -36,13 +36,15 @@ export function AuthProvider({ children }) {
   async function login(email, password) {
     try {
       const response = await fetch(`${API}/users/login`, {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ email, password }),
       });
-      await response.json();
+      const result = await response.json();
+      setToken(result.token);
     } catch (error) {
       console.error("Login Error", error);
     }
