@@ -97,3 +97,126 @@
   font-size: 1.2em;
   color: #999;
 }
+
+header {
+  background-color: #34495E;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+header p {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 0;
+  color: #ECF0F1;
+}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+nav a {
+  color: #ECF0F1;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+nav a:hover {
+  background-color: #2C3E50;
+  color: #FFFFFF;
+}
+nav a.active {
+  color: #F1C40F;
+  border-bottom: 2px solid #F1C40F;
+}
+nav button {
+  padding: 10px 15px;
+}
+
+/* Styling for the main book list container (the <ul>) */
+ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 20px auto;
+  
+  /* Create a responsive grid for the book cards */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px; /* Space between the cards */
+  max-width: 1200px;
+}
+
+/* Styling for each book card item (the <li>) */
+li {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden; /* Ensures contents respect the border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #ffffff;
+}
+
+li:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Style the Link component (the entire clickable area) */
+li a {
+  text-decoration: none;
+  color: inherit; /* Inherit text color from parent */
+  display: block;
+}
+
+/* Style the inner div that wraps the content */
+li div {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  padding: 15px;
+  height: 100%; /* Ensure content fills the card height */
+  box-sizing: border-box;
+}
+
+/* Styling for the book cover image */
+li img {
+  width: 100px; /* Overrides inline style with more control */
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Styling for the book title */
+li h3 {
+  font-size: 1.1em;
+  color: #34495e;
+  text-align: center;
+  margin: 5px 0 15px 0;
+  min-height: 40px; /* Ensure consistent height for titles */
+}
+
+/* Styling for the "View" button */
+li button {
+  background-color: #007bff; /* Blue call-to-action color */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  width: 100%; /* Full width within the padding */
+  margin-top: auto; /* Push button to the bottom */
+}
+
+li button:hover {
+  background-color: #0056b3;
+}

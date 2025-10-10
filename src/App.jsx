@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router";
 import BookDetail from "./reservations/BookDetail";
-import BookList from "./catalog/list";
+import List from "./catalog/list";
 import Layout from "./catalog/Layout";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/books" element={<BookList />} />
+          <Route path="/books" element={<List />} />
           <Route path="/books/:id" element={<BookDetail />} />
           <Route path="*" element={<NotFound />} />
         </Route>
