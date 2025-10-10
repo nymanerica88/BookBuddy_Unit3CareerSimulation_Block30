@@ -4,6 +4,7 @@ import BookList from "./catalog/list";
 import Layout from "./catalog/Layout";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
+import NotFound from "./catalog/NotFound";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/books" element={<BookList />} />
           <Route path="/books/:id" element={<BookDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>
