@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "./ContextToken";
 
-export default function CompleteLogin() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuth();
