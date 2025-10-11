@@ -1,16 +1,21 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "./ContextToken";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const navigate = useNavigate();
+  const { login, isError, token } = useAuth();
   async function handleSubmit(event) {
     event.preventDefault();
     try {
       await login(email, password);
       setEmail("");
       setPassword("");
+      if (!isError) {
+        navigate("/account-details");
+      }
     } catch (error) {
       console.error(
         "Login failed. If you're receiving this error message and are an existing Book Buddy Club Member, please contact customer service at 800-523-6629. Otherwise, please register for a new account.",
@@ -21,7 +26,7 @@ export default function Login() {
 
   return (
     <>
-      <h1>Welcome to Book Buddy! </h1>
+      <h1>Welcome to the Book Buddy Login Page! </h1>
       <p>
         Book Buddy is the most popular book club around with a new recommended
         reading list available each month and additional special offers and
@@ -53,6 +58,17 @@ export default function Login() {
         </label>
         <button>Login</button>
       </form>
+      {!isError && (
+        <p>
+          Don't have an account? Please <Link to="register">register here</Link>
+        </p>
+      )}
+      {isError && (
+        <p>
+          We're sorry, but we're not showing an existing account under this
+          username and password. Please <Link to="/register">register</Link>
+        </p>
+      )}
     </>
   );
 }
