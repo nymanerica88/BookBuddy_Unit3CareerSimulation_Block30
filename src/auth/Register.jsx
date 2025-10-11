@@ -20,6 +20,9 @@ export default function Register() {
       setLastName("");
       setEmail("");
       setPassword("");
+      if (!isError) {
+        navigate("/login");
+      }
     } catch (error) {
       console.error(
         "Registration could not be completed at this time. Please contact customer service at 800-523-6629.",
