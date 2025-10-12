@@ -85,21 +85,6 @@ export function AuthProvider({ children }) {
     navigate("/books");
   }
 
-  // async function login(email, password) {
-  //   try {
-  //     const response = await fetch(`${API}/users/login`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     await response.json();
-  //   } catch (error) {
-  //     console.error("Login Error", error);
-  //   }
-  // }
-
   const value = useMemo(() => {
     return {
       register,
