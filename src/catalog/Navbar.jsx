@@ -15,7 +15,7 @@ export default function Navbar() {
 
         {token ? (
           <button onClick={logout}>Logout</button>,
-          <NavLink to="/account">Profile</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
         ) : (
           <>
             <NavLink to="/login">Login</NavLink>
