@@ -60,7 +60,7 @@ export default function Login() {
       </form>
       {!isError && (
         <p>
-          Don't have an account? Please <Link to="register">register here</Link>
+          Don't have an account? Please <Link to="/register">register here</Link>
         </p>
       )}
       {isError && (
