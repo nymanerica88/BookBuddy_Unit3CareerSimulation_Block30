@@ -27,9 +27,13 @@ export default function BookDetail() {
 
   const handleReserveBook = async () => {
     setError(null);
-    const status = await addReservation(token, id);
-    if (Number(status) === 201) {
-      setReserve(true);
+    try {
+      const status = await addReservation(token, id);
+      if (Number(status) === 201) {
+        setReserve(true);
+      }
+    } catch (error) {
+      setError(error.message);
     }
   };
 

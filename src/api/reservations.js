@@ -7,7 +7,7 @@ export async function addReservation(token, bookId) {
   }
 
   try {
-    const response = fetch(BASE_RESERVATION_URL, {
+    const response = await fetch(BASE_RESERVATION_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,12 +18,11 @@ export async function addReservation(token, bookId) {
     const result = await response;
 
     if (!result.ok) {
-      throw new Error("Book Reserved.");
+      throw new Error("Book already reserved. Please reserve different book.");
     }
 
     return result.status;
   } catch (error) {
-    console.error(error);
     throw new Error(error.message);
   }
 }
