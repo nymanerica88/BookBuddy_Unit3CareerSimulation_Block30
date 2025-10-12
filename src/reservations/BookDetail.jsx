@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { getBookDetails } from "../api/books";
 import { addReservation } from "../api/reservations";
+import { useAuth } from "../auth/ContextToken";
 
 export default function BookDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { token } = useState(null);
+  const { token } = useAuth();
 
   const [selectedBook, setSelectedBook] = useState(null);
   const [error, setError] = useState(null);
@@ -26,11 +27,9 @@ export default function BookDetail() {
 
   const handleReserveBook = async () => {
     setError(null);
-    try {
-      await addReservation(token, id);
-      setReserve(!reserved);
-    } catch (error) {
-      setError(error.message);
+    const status = await addReservation(token, id);
+    if (Number(status) === 201) {
+      setReserve(true);
     }
   };
 
@@ -54,7 +53,7 @@ export default function BookDetail() {
         }`}
         onClick={handleReserveBook}
       >
-        {!reserved ? "Reserve Book" : "Unreserve Book"}
+        {reserved ? "Reserved" : "Reserve Book"}
       </button>
       {error && <p role="alert">{error}</p>}
     </section>

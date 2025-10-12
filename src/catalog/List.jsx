@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { getBooks } from "../api/books";
+import BookSearch from "./search";
 
-export default function BookList() {
+export default function List() {
   const [books, setBooks] = useState([]);
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,9 +26,18 @@ export default function BookList() {
   if (books.length === 0) {
     return <p>No books available.</p>;
   }
+
+const filtered = books.filter(
+        (book) =>
+          book.title.toLowerCase().includes(query.toLowerCase()) ||
+          book.author.toLowerCase().includes(query.toLowerCase())
+      );
+
   return (
+    <div>
+    <BookSearch query={query} setQuery={setQuery} filtered={filtered} />
     <ul>
-      {books.map((book) => (
+      {filtered.map((book) => (
         <li key={book.id}>
           <Link to={`/books/${book.id}`}>
             <div>
@@ -43,5 +54,6 @@ export default function BookList() {
         </li>
       ))}
     </ul>
+    </div>
   );
 }

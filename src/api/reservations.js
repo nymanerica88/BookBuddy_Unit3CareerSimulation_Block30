@@ -6,17 +6,24 @@ export async function addReservation(token, bookId) {
     throw new Error("Please log in to reserve book");
   }
 
-  const response = fetch(BASE_RESERVATION_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ bookId }),
-  });
+  try {
+    const response = fetch(BASE_RESERVATION_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ bookId }),
+    });
+    const result = await response;
 
-  if (!response.ok) {
-    await response.json();
-    throw Error("Failure to reserve book: Already reserved");
+    if (!result.ok) {
+      throw new Error("Book Reserved.");
+    }
+
+    return result.status;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error.message);
   }
 }
