@@ -47,17 +47,21 @@ export function AuthProvider({ children }) {
         body: JSON.stringify({ email, password }),
       });
 
-      if (!response.ok) {
-        setIsError(true);
-        throw new Error("Login failed.");
-      }
       const data = await response.json();
-      console.log(data);
-      setToken(data.token);
-      localStorage.setItem("token", data.token);
+
+      if (response.ok) {
+        setToken(data.token);
+        localStorage.setItem("token", data.token);
+        setIsError(false);
+        return true;
+      } else {
+        setIsError(true);
+        return false;
+      }
     } catch (error) {
       setIsError(true);
-      console.error("The login didn't work properly",error);
+      console.error("Login failed:", error);
+      return false;
     }
   }
 
