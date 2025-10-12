@@ -5,7 +5,7 @@ const NavClass = ({ isActive }) => link + (isActive ? "active" : "");
 
 // Navbar with site navigation links
 export default function Navbar() {
-  const { token } = useAuth();
+  const { token, logout } = useAuth();
 
   return (
     <header>
@@ -14,7 +14,7 @@ export default function Navbar() {
         <NavLink to="/books">Books</NavLink>
 
         {token ? (
-          <button>Logout</button>
+          <button onClick={logout}>Logout</button>
         ) : (
           <>
             <NavLink to="/login">Login</NavLink>
