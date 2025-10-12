@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
       return data;
     } catch (error) {
       setIsError(true);
-      console.error("Registration Error", "error");
+      console.error("Registration Error", error);
     }
   }
 
@@ -57,7 +57,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem("token", data.token);
     } catch (error) {
       setIsError(true);
-      console.error("The login didn't work properly");
+      console.error("The login didn't work properly",error);
     }
   }
 
