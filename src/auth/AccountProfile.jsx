@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "./ContextToken";
-
+import { getReservations } from "../api/reservations";
 export default function AccountProfile() {
   const { token, authenticate } = useAuth();
   const [user, setUser] = useState(null);
+  const [usersReservedBooks, setUsersReservedBooks] = useState([]);
+
   useEffect(() => {
     if (!token) {
       return;
@@ -14,12 +16,30 @@ export default function AccountProfile() {
     }
     getUser();
   }, [token]);
+
+  useEffect(() => {
+    const syncUsersBooks = async () => {
+      const books = await getReservations(token);
+      setUsersReservedBooks(books);
+    };
+    syncUsersBooks();
+  }, [token, usersReservedBooks]);
+
   return (
     <section>
       <h1>
         Welcome, {user?.firstname} {user?.lastname}{" "}
       </h1>
       <p>email: {user?.email}</p>
+      {usersReservedBooks?.length === 0 ? (
+        <p>No Books Reserved.</p>
+      ) : (
+        <ul className="reserved-books">
+          {usersReservedBooks.map((book) => {
+            return <li key={book.id}>{book.title}</li>;
+          })}
+        </ul>
+      )}
     </section>
   );
 }

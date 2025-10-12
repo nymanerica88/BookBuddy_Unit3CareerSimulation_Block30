@@ -220,3 +220,31 @@ li button {
 li button:hover {
   background-color: #0056b3;
 }
+
+/* Styling for the list container */
+.reserved-books {
+  list-style: none; /* Removes the default bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+/* Styling for each individual book item */
+.reserved-books li {
+  padding: 15px 20px;
+  margin-bottom: 8px; /* Space between list items */
+  background-color: #f0f8ff; /* Very light blue background for items */
+  border-left: 5px solid #007bff; /* Primary color accent bar */
+  border-radius: 5px;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect for interactivity */
+.reserved-books li:hover {
+  transform: translateX(5px); /* Moves the item slightly to the right */
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); /* Light blue shadow on hover */
+  background-color: #e6f3ff;
+  cursor: pointer;
+}
