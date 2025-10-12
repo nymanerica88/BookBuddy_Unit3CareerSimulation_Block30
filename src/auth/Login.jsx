@@ -65,8 +65,7 @@ export default function Login() {
       )}
       {isError && (
         <p>
-          We're sorry, but we're not showing an existing account under this
-          username and password. Please <Link to="/register">register</Link>
+          Login failed. Please <Link to="/register">register</Link> here.
         </p>
       )}
     </>
