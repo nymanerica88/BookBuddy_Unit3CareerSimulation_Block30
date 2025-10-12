@@ -42,3 +42,24 @@ export async function getReservations(token) {
     console.error(error.message);
   }
 }
+
+export async function deleteReservation(token, id) {
+  try {
+    const response = await fetch(`${BASE_RESERVATION_URL}/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to return book. Please try again");
+    }
+
+    return await response;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+}
