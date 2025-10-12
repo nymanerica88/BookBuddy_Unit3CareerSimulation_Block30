@@ -14,7 +14,7 @@ export default function Login() {
       setEmail("");
       setPassword("");
       if (!isError) {
-        navigate("/account-details");
+        navigate("/account");
       }
     } catch (error) {
       console.error(
