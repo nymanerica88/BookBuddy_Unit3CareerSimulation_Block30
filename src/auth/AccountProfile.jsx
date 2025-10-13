@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "./ContextToken";
-import { getReservations } from "../api/reservations";
+import { getReservations, deleteReservation } from "../api/reservations";
+
 export default function AccountProfile() {
   const { token, authenticate } = useAuth();
   const [user, setUser] = useState(null);
   const [usersReservedBooks, setUsersReservedBooks] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!token) {
@@ -25,6 +27,17 @@ export default function AccountProfile() {
     syncUsersBooks();
   }, [token, usersReservedBooks]);
 
+  const handleReturnBook = async (event) => {
+    setError(null);
+    event.preventDefault();
+    const id = event.target.id;
+    try {
+      await deleteReservation(token, id);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <section>
       <h1>
@@ -35,8 +48,15 @@ export default function AccountProfile() {
         <p>No Books Reserved.</p>
       ) : (
         <ul className="reserved-books">
-          {usersReservedBooks.map((book) => {
-            return <li key={book.id}>{book.title}</li>;
+          {usersReservedBooks.map((reservation) => {
+            return (
+              <li key={reservation.id}>
+                {reservation.title}
+                <button id={reservation.id} onClick={handleReturnBook}>
+                  Return
+                </button>
+              </li>
+            );
           })}
         </ul>
       )}
