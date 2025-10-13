@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { useAuth } from "./auth/ContextToken";
+import { useAuth } from "../auth/ContextToken";
 
 const NavClass = ({ isActive }) => link + (isActive ? "active" : "");
 
