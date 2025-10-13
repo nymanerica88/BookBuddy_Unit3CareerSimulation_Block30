@@ -9,19 +9,24 @@ export default function Login() {
   const { login, isError, token } = useAuth();
   async function handleSubmit(event) {
     event.preventDefault();
-    try {
-      await login(email, password);
+    const success = await login(email, password);
+    if (success) {
       setEmail("");
       setPassword("");
-      if (!isError) {
-        navigate("/account-details");
-      }
-    } catch (error) {
-      console.error(
-        "Login failed. If you're receiving this error message and are an existing Book Buddy Club Member, please contact customer service at 800-523-6629. Otherwise, please register for a new account.",
-        error
-      );
+      navigate("/account");
     }
+    // try {
+    //   await login(email, password);
+    //   setEmail("");
+    //   setPassword("");
+    //   if (!isError) {
+    //     navigate("/account");
+    //   }
+    // } catch (error) {
+    //   console.error(
+    //     "Login failed. If you're receiving this error message and are an existing Book Buddy Club Member, please contact customer service at 800-523-6629. Otherwise, please register for a new account.",
+    //     error
+    //   );
   }
 
   return (
@@ -60,13 +65,13 @@ export default function Login() {
       </form>
       {!isError && (
         <p>
-          Don't have an account? Please <Link to="register">register here</Link>
+          Don't have an account? Please{" "}
+          <Link to="/register">register here</Link>
         </p>
       )}
       {isError && (
         <p>
-          We're sorry, but we're not showing an existing account under this
-          username and password. Please <Link to="/register">register</Link>
+          Login failed. Please <Link to="/register">register</Link> here.
         </p>
       )}
     </>
