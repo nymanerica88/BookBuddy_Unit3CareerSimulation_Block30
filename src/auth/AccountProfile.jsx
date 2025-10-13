@@ -15,7 +15,7 @@ export default function AccountProfile() {
     getUser();
   }, [token]);
   return (
-    <section>
+    <section className="container">
       <h1>
         Welcome, {user?.firstname} {user?.lastname}{" "}
       </h1>
