@@ -26,3 +26,19 @@ export async function addReservation(token, bookId) {
     throw new Error(error.message);
   }
 }
+
+export async function getReservations(token) {
+  try {
+    const response = await fetch(BASE_RESERVATION_URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
