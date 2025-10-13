@@ -73,7 +73,6 @@ export function AuthProvider({ children }) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ email, password }),
       });
       if (!response.ok) {
         throw new Error("Authentication failed: ", response.status);
