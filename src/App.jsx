@@ -14,7 +14,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="account-details" element={<AccountProfile />} />
+          <Route path="/account" element={<AccountProfile />} />
           <Route path="/books" element={<List />} />
           <Route path="/books/:id" element={<BookDetail />} />
           <Route path="*" element={<NotFound />} />

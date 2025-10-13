@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
       return data;
     } catch (error) {
       setIsError(true);
-      console.error("Registration Error", "error");
+      console.error("Registration Error", error);
     }
   }
 
@@ -47,17 +47,21 @@ export function AuthProvider({ children }) {
         body: JSON.stringify({ email, password }),
       });
 
-      if (!response.ok) {
-        setIsError(true);
-        throw new Error("Login failed.");
-      }
       const data = await response.json();
-      console.log(data);
-      setToken(data.token);
-      localStorage.setItem("token", data.token);
+
+      if (response.ok) {
+        setToken(data.token);
+        localStorage.setItem("token", data.token);
+        setIsError(false);
+        return true;
+      } else {
+        setIsError(true);
+        return false;
+      }
     } catch (error) {
       setIsError(true);
-      console.error("The login didn't work properly");
+      console.error("Login failed:", error);
+      return false;
     }
   }
 
@@ -85,21 +89,6 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("token");
     navigate("/books");
   }
-
-  // async function login(email, password) {
-  //   try {
-  //     const response = await fetch(`${API}/users/login`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     await response.json();
-  //   } catch (error) {
-  //     console.error("Login Error", error);
-  //   }
-  // }
 
   const value = useMemo(() => {
     return {
