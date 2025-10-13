@@ -57,7 +57,11 @@ export default function BookDetail() {
         }`}
         onClick={handleReserveBook}
       >
-        {reserved ? "Reserved" : "Reserve Book"}
+        {reserved
+          ? "Reserved"
+          : selectedBook.available
+          ? "Reserve Book"
+          : "Unavailable"}
       </button>
       {error && <p role="alert">{error}</p>}
     </section>
