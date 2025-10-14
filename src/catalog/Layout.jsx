@@ -11,6 +11,7 @@ export default function Layout() {
       <main>
         {location.pathname === "/" && (
           <img
+            className="Cover"
             src={CoverImage}
             alt="Main visual"
             style={{

@@ -27,33 +27,33 @@ export default function List() {
     return <p>No books available.</p>;
   }
 
-const filtered = books.filter(
-        (book) =>
-          book.title.toLowerCase().includes(query.toLowerCase()) ||
-          book.author.toLowerCase().includes(query.toLowerCase())
-      );
+  const filtered = books.filter(
+    (book) =>
+      book.title.toLowerCase().includes(query.toLowerCase()) ||
+      book.author.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
-    <div>
-    <BookSearch query={query} setQuery={setQuery} filtered={filtered} />
-    <ul>
-      {filtered.map((book) => (
-        <li key={book.id}>
-          <Link to={`/books/${book.id}`}>
-            <div>
-              <img
-                src={book.coverimage}
-                alt={`Cover of ${book.title}`}
-                style={{ width: "100px", height: "auto" }}
-              />
+    <div className="booklist">
+      <BookSearch query={query} setQuery={setQuery} filtered={filtered} />
+      <ul>
+        {filtered.map((book) => (
+          <li key={book.id}>
+            <Link to={`/books/${book.id}`}>
+              <div>
+                <img
+                  src={book.coverimage}
+                  alt={`Cover of ${book.title}`}
+                  style={{ width: "100px", height: "auto" }}
+                />
 
-              <h3>{book.title}</h3>
-              <button onClick={handleViewBook}>View</button>
-            </div>
-          </Link>
-        </li>
-      ))}
-    </ul>
+                <h3>{book.title}</h3>
+                <button onClick={handleViewBook}>View</button>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
