@@ -39,7 +39,7 @@ export default function AccountProfile() {
   };
 
   return (
-    <section>
+    <section className="container">
       <h1>
         Welcome, {user?.firstname} {user?.lastname}{" "}
       </h1>
