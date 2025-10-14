@@ -9,6 +9,12 @@ body {
   margin: 0;
 }
 
+.booklist {
+  height: 90vh;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
 /* A container for all page content (text + form) */
 .container {
   display: flex;
@@ -111,7 +117,7 @@ p a:hover {
 }
 
 /* Paragraph content (Description and Availability) */
-.book-detail .book-description {
+.book-detail p {
   line-height: 1.6;
   color: #666;
   margin-bottom: 25px;
@@ -175,7 +181,7 @@ p a:hover {
 }
 
 /* Fallback message style */
-.book-detail + .book-description {
+.book-detail + p {
   text-align: center;
   margin-top: 50px;
   font-size: 1.2em;
@@ -303,32 +309,4 @@ li button {
 
 li button:hover {
   background-color: #0056b3;
-}
-
-/* Styling for the list container */
-.reserved-books {
-  list-style: none; /* Removes the default bullet points */
-  padding: 0;
-  margin: 0;
-}
-
-/* Styling for each individual book item */
-.reserved-books li {
-  padding: 15px 20px;
-  margin-bottom: 8px; /* Space between list items */
-  background-color: #f0f8ff; /* Very light blue background for items */
-  border-left: 5px solid #007bff; /* Primary color accent bar */
-  border-radius: 5px;
-  font-size: 1.05em;
-  font-weight: 500;
-  color: #333;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Hover effect for interactivity */
-.reserved-books li:hover {
-  transform: translateX(5px); /* Moves the item slightly to the right */
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); /* Light blue shadow on hover */
-  background-color: #e6f3ff;
-  cursor: pointer;
 }
